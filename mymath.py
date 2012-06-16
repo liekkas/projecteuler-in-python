@@ -36,47 +36,63 @@ def sumSquares(begin,end):
 def squaresSum(begin,end):
     return sum(map(lambda x:x**2,xrange(begin,end)))    
 
-#求素数
-def findPrimeByIndex(index):
-    count = 0
-    i = 2
-    while i > 0:
-        if isPrime(i):
-            count += 1
-        if(count == index):
-            return i
-        i += 1   
-
-#判断是否是素数
-def isPrime(number):
-    if number < 2:
-        return False;
-    elif number == 2:
-        return True;
+# 求指定值以内[不包括该值]的所有素数，返回list
+# 采用Sieve of Eratosthenes算法，效果较高
+# http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+# 求质数最经典的方法是Eratosthenes筛选法，一般都是利用一个布尔数组作为筛选器，将下标作为目标数，
+# 元素作为该目标是否为质数的标志，并且对于给定范围1~n之间的数，只需要筛选掉1到sqrt(n)之间的质数的所有倍数，
+# 剩下的就都是质数了。
+def findPrimers(n):
+    result = []
+    if n < 2:
+        return result
+    elif n == 2:        
+        return [2]
+    elif n == 3:
+        return [2,3]
     else:
-        for x in range(2,int(math.sqrt(number))+1):
-            if(number%x == 0):
-                return False;
-    return True;
-
-# 统计小于指定值下所有的素数之和，效率很高
-def sumPrime(n):
-    mark = ['0'] * ((n / 2) - 1)
-    s = 2
+        result.append(2)
+    mark = [True] * ((n / 2) - 1)
     p = 3
     while p * p < n:
-        if mark[(p / 2) - 1] == '0':
+        if mark[(p / 2) - 1] == True:
             v = (p / 2) - 1 + p
-            s += p
+            result.append(p)
             while v < len(mark):
-                mark[v] = '1'
+                mark[v] = False
                 v += p
         p += 2
     for i in range((p / 2) - 1, len(mark)):
-        if mark[i] == '0':
-            s += ((i + 1) * 2) + 1
-    return s
+        if mark[i] == True:
+            result.append(((i + 1) * 2) + 1)
+    return result
+
+#判断某个值是否是素数
+def isPrimer(n):
+    if n == 2:
+        return True
+    elif n % 2 == 0:
+        return False
     
+    i = 3
+    range = int( math.sqrt(n) ) + 1
+    while( i < range ):
+        if( n % i == 0):
+            return False
+        i += 1
+    return True
+
+#求第几个素数
+def findPrimerByIndex(index):
+    if index < 2:
+        return 2
+    N,T = 1,3
+    while N < index:
+        if isPrimer(T):
+            N+=1
+        T+=2 
+    return T-2
+
     
 
 

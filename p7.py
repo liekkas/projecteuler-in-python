@@ -4,6 +4,6 @@
 # @date 2012-6-15 23:55:30
 #
 # 求第10001位的素数
-from mymath import findPrimeByIndex
+from mymath import findPrimerByIndex
 
-print findPrimeByIndex(10001)
+print findPrimerByIndex(10001)

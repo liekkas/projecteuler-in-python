@@ -4,7 +4,6 @@
 # @date 2012-6-16 16:45:44
 #求和：200,0000以内的素数之和
 
-from mymath import sumPrime
+from mymath import findPrimers,isPrimer,findPrimerByIndex
 
-#采用筛选算法，结果为：142913828922，用时0.31s
-print sumPrime(2000000)		
+print sum(findPrimers(2000000))		
