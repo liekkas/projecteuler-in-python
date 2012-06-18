@@ -5,13 +5,9 @@
 # 勾股数a,b,c满足：a<b<c  a^2 + b^2 = c^2
 # 已知：a+b+c = 1000 求a*b*c
 
-#方法一：程序直接求解
-for a in range(1, 1000):
-    for b in range(1, 1000):
-        for c in range(1, 1000):
-            if a+b+c == 1000 and a+b>c:
-                if (a**2) + (b**2) == (c**2):
-                    print a*b*c
+#方法一：列表表达程序直接求解
+print[a*b*(1000-a-b) for a in range(1,1000) for b in range(a,1000) if a*a+b*b==(1000-a-b)**2]
+
 #方法二：搞懂勾股数的规律
 #勾股定理的规律  a=m^-n^,b=2mn,c=m^+n^
 # 
@@ -30,3 +26,4 @@ for a in range(1, 1000):
 
 # a= 200; b= 375; c= 425; 
 # 故：a*b*c = 200*375*425 = 31875000
+

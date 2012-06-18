@@ -42,30 +42,15 @@ def squaresSum(begin,end):
 # 求质数最经典的方法是Eratosthenes筛选法，一般都是利用一个布尔数组作为筛选器，将下标作为目标数，
 # 元素作为该目标是否为质数的标志，并且对于给定范围1~n之间的数，只需要筛选掉1到sqrt(n)之间的质数的所有倍数，
 # 剩下的就都是质数了。
-def findPrimers(n):
-    result = []
-    if n < 2:
-        return result
-    elif n == 2:        
-        return [2]
-    elif n == 3:
-        return [2,3]
-    else:
-        result.append(2)
-    mark = [True] * ((n / 2) - 1)
-    p = 3
-    while p * p < n:
-        if mark[(p / 2) - 1] == True:
-            v = (p / 2) - 1 + p
-            result.append(p)
-            while v < len(mark):
-                mark[v] = False
-                v += p
-        p += 2
-    for i in range((p / 2) - 1, len(mark)):
-        if mark[i] == True:
-            result.append(((i + 1) * 2) + 1)
-    return result
+def findPrimers(max_number):
+    primes = range(2, max_number)
+    
+    for prime in primes:
+        if(prime):
+            for multiples in range(prime**2, max_number, prime):
+                primes[multiples - 2] = False
+
+    return [prime for prime in primes if prime]
 
 #判断某个值是否是素数
 def isPrimer(n):
