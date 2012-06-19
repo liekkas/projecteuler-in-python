@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# 原题连接: http://projecteuler.net/problem=9
+# 原题连接: http://projecteuler.net/problem=11
 # @author liekkas.zeng
 # @date 2012-6-18 14:46:01
 # 原题：在20*20的矩阵中找出连续4个数字相乘最大的数，这个连续可以使水平的、垂直的、对角的

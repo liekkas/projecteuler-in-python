@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# 原题连接: http://projecteuler.net/problem=9
+# 原题连接: http://projecteuler.net/problem=12
 # @author liekkas.zeng
 # @date 2012-6-18 17:13:43
 import math
@@ -24,7 +24,7 @@ while n:
 		break
 	n += 1
 
-#方法二：在论坛里看到这个方法，超级快啊  Result: 76576500   0.0891316602373
+#方法二：在论坛里看到这个方法，超级快啊,  Result: 76576500   0.0891316602373
 def sieve_of_eratosthenes(max_number):
     primes = range(2, max_number)
     
@@ -35,7 +35,7 @@ def sieve_of_eratosthenes(max_number):
 
     return [prime for prime in primes if prime]
 
-
+#根据素数求因子个数
 def number_of_divisors(number, primes):
     exponents = []
     
