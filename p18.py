@@ -16,7 +16,6 @@ for line in f:
 	r.append(map(int,string.strip(line).split(" ")))
 f.close()
 
-m = 0
 r.reverse()
 for x in xrange(0,len(r)-1):
 	for y in xrange(0,len(r[x+1])):

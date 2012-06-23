@@ -52,6 +52,20 @@ def findPrimers(max_number):
 
     return [prime for prime in primes if prime]
 
+#返回某个数所有的因数，不包括自己
+#例如12，算的时候只要算到12**0.5，
+def findFactors(max_number):
+    factors = [1]
+
+    for x in range(2,int(max_number**0.5)+1):
+        if max_number%x == 0: #如果能整除的话，那也必然要整除这个数的余数，如12能整除3，那么12也能整除余数4
+            factors.append(x)
+            remainder = max_number//x
+            if remainder and remainder not in factors:
+                factors.append(remainder)
+
+    return factors
+
 #判断某个值是否是素数
 def isPrimer(n):
     if n == 2:
@@ -78,7 +92,27 @@ def findPrimerByIndex(index):
         T+=2 
     return T-2
 
-    
+# Fibonacci数列
+def findFibonacci(n):
+    r = [1,1]
+    a,b,c = 1,1,0
+    while c<n:
+        c = a+b
+        a = b
+        b = c
+        r.append(c)
+    return r
+
+# 查找某个位置上的Fibonacci数
+def findFibonacciByIndex(index):
+    count = 0
+    a,b,c = 1,1,0
+    while count!= index:
+        c = a+b
+        a = b
+        b = c
+        count += 1
+    return c
 
 
     
