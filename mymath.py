@@ -105,7 +105,10 @@ def findFibonacci(n):
 
 # 查找某个位置上的Fibonacci数
 def findFibonacciByIndex(index):
-    count = 0
+    if index < 3:
+        return 1
+        
+    count = 2
     a,b,c = 1,1,0
     while count!= index:
         c = a+b
